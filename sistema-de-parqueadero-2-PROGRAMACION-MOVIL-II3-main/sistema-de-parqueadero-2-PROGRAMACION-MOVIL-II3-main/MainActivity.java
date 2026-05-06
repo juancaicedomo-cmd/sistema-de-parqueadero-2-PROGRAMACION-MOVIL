@@ -1,0 +1,1 @@
+Toast.makeText(this, "Vehículo registrado", Toast.LENGTH_SHORT).show();

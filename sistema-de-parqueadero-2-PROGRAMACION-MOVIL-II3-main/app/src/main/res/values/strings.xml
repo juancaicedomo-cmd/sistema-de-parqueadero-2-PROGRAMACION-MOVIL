@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Parqueadero</string>
+    <!-- Emulador: 10.0.2.2 apunta al localhost de tu PC. En dispositivo físico usa la IP LAN de tu PC, ej. http://192.168.1.10:3000 -->
+    <string name="socket_server_url">http://10.0.2.2:3000</string>
+    <string name="error_placa_vacia">Ingrese la placa</string>
+    <string name="msg_vehiculo_registrado">Vehículo registrado</string>
+    <string name="msg_vehiculo_ingreso">Vehículo ingresó: %1$s</string>
+    <string name="error_socket">No se pudo iniciar el socket (revisa la URL del servidor)</string>
+    <string name="error_enviar_notificacion">Error al enviar la notificación</string>
+    <string name="msg_notificacion_enviada">Notificación enviada</string>
+    <string name="fcm_canal_nombre">Avisos del parqueadero</string>
+    <string name="fcm_canal_descripcion">Notificaciones de ingreso y salida de vehículos</string>
+    <string name="fcm_mensaje_default">Nuevo aviso del parqueadero</string>
+</resources>

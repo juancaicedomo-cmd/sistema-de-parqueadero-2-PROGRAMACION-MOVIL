@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parqueadero — notificaciones (demo)</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 560px; margin: 2rem auto; padding: 0 1rem; }
+    h1 { font-size: 1.25rem; }
+    #log { background: #111; color: #0f0; padding: 1rem; border-radius: 8px; min-height: 120px; white-space: pre-wrap; font-size: 0.9rem; }
+    .hint { color: #666; font-size: 0.85rem; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>Notificaciones en tiempo real</h1>
+  <p>Esta página escucha el mismo evento <code>notificacion</code> que la app Android.</p>
+  <div id="log">Esperando conexión…</div>
+  <p class="hint">
+    Debes tener el servidor Node ejecutándose (<code>npm start</code>). Si abres esto con Live Server,
+    configura abajo la URL del servidor (en la misma PC suele ser <code>http://localhost:3000</code>).
+  </p>
+  <label>
+    URL del servidor Socket.IO<br />
+    <input id="url" type="text" value="http://localhost:3000" style="width: 100%; margin-top: 0.25rem;" />
+  </label>
+  <p><button type="button" id="connect">Conectar</button></p>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.5.0/socket.io.slim.js"></script>
+  <script>
+    const logEl = document.getElementById('log');
+    function log(msg) {
+      logEl.textContent += msg + '\n';
+    }
+
+    let socket;
+    document.getElementById('connect').onclick = () => {
+      const url = document.getElementById('url').value.trim();
+      if (socket) socket.close();
+      logEl.textContent = 'Conectando a ' + url + '…\n';
+      socket = io(url, { transports: ['websocket', 'polling'] });
+      socket.on('connect', () => log('Conectado.'));
+      socket.on('notificacion', (data) => log('notificacion: ' + JSON.stringify(data)));
+      socket.on('disconnect', () => log('Desconectado.'));
+      socket.on('connect_error', (err) => log('Error: ' + (err && err.message ? err.message : err)));
+    };
+  </script>
+</body>
+</html>

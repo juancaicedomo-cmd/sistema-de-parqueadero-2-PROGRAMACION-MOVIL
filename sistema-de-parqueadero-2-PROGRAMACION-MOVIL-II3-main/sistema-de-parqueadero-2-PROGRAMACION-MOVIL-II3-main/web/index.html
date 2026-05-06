@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+    <title>Parqueadero</title>
+</head>
+<body>
+    <h1>Sistema de Parqueadero</h1>
+
+    <input type="text" id="placa" placeholder="Placa">
+    <button onclick="registrar()">Registrar</button>
+
+    <h3 id="mensaje"></h3>
+
+    <!-- Socket.IO -->
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+
+    <script>
+        const socket = io("http://localhost:3000");
+
+        socket.on("notificacion", (msg) => {
+            document.getElementById("mensaje").innerText = msg;
+        });
+
+        function registrar() {
+            const placa = document.getElementById("placa").value;
+
+            fetch("http://localhost:3000/vehiculo?placa=" + placa)
+                .then(res => res.text())
+                .then(data => console.log(data));
+        }
+    </script>
+</body>
