@@ -36,9 +36,9 @@ Relación con Historias de Usuario
 
  Pruebas realizadas
 
-- Se probó el registro de vehículos y funciona correctamente ✔
-- Se probó el cálculo de tarifa al salir y funciona correctamente ✔
-- Se probó el inicio de sesión de usuarios ✔
+- Se probó el registro de vehículos y funciona correctamente 
+- Se probó el cálculo de tarifa al salir y funciona correctamente 
+- Se probó el inicio de sesión de usuarios 
 
 Cada funcionalidad fue probada de manera individual para validar su correcto funcionamiento
 
